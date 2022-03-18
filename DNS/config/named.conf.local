@@ -8,6 +8,9 @@
 
 
 zone "l2-7.ephec-ti.be"{
+
     type master;
     file "/etc/bind/db.l2-7.ephec-ti.be
 }
+
+}; 
