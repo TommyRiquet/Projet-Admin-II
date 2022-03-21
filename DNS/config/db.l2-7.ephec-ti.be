@@ -1,7 +1,7 @@
 $TTL 86400 ; 1 day
 $ORIGIN l2-7.ephec-ti.be.; SOA
 
-@           IN      SOA     ns1.l2-7.ephec-ti.be.     admin.l2-7.ephec-ti.be. (
+@           IN      SOA     ns.l2-7.ephec-ti.be.     admin.l2-7.ephec-ti.be. (
                                     2017060101  ; serial
                                     86400       ; refesh (1 day)
                                     3600        ; retry (1 hour)
