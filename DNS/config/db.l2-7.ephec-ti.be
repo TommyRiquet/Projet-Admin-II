@@ -8,9 +8,9 @@ $ORIGIN l2-7.ephec-ti.be.; SOA
                                     3600000     ; expire (41 days)
                                     3600        ; minimun (1 hour)
 )
-@           IN      NS      ns.l2-7.ephec-ti.be
-            MX      10      mail.l2-7.ephec-ti.be
-
+@           IN      NS      ns
+            MX      10      mail
+            
 ns             IN      A        176.96.231.192
 www             IN      A       176.96.231.192
 mail            IN      A       176.96.231.192
