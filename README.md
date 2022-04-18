@@ -15,6 +15,7 @@ Ce projet utilise Docker pour mettre les différents services dans des container
 
 * **Tommy Riquet** _alias_ [@TommyRiquet](https://github.com/TommyRiquet)
 * **Quentin Roeland** _alias_ [@quentinrld](https://github.com/quentinrld)
+* **Louis Dewilde** _alias_ [@craftbrak](https://github.com/craftbrak)
 
 Lisez la liste des [contributeurs](https://github.com/TommyRiquet/Projet-Admin-II/contributors) pour voir qui à aidé au projet !
 
