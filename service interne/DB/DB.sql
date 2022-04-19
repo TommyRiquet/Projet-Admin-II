@@ -7,6 +7,6 @@ CREATE TABLE 'articles' (
   CONSTRAINT 'pk_articles' PRIMERY KEY (ID);
 )
 
-CREATE USER admin IDENTIFIED WITH mysql_native_password BY 'password'
+CREATE USER admin IDENTIFIED BY PASSWORD 'password'
 
 GRANT ALL PRIVILEGES ON Woodytoys.* TO admin 
