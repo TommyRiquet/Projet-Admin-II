@@ -13,6 +13,7 @@ $ORIGIN l2-7.ephec-ti.be.; SOA
             
 ns              IN      A        176.96.231.192
 www             IN      A        176.96.231.192
+b2b             IN      A        176.96.231.192
 mail            IN      A        176.96.231.192
 voip            IN      A        176.96.231.194
 _sip._tcp	86400	IN	   SRV	  10	  100	  5060	  voip.l2-7.ephec-ti.be.
