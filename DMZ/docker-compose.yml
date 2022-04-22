@@ -59,8 +59,6 @@ services:
       - VALIDATION=http
     volumes:
       - ./WEB/security/certs:/config
-    ports:
-      - "443:443"
     networks:
       # Attribue une adresse IP au container WEB appartenant à la zone DMZ
       dmz_net:
