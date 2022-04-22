@@ -40,6 +40,10 @@ services:
     # Attribution des ports 3306 pour le service MySQL
     ports:
       - "3306:3306"
+    networks:
+      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
+      dmz_net:
+        ipv4_address: 192.168.0.6
     volumes:
       # Commande permettant de pouvoir insérer les données dans la DB depuis un fichier .sql
       - ./WEB/DB/db_woodytoys/db-data:/docker-entrypoint-initdb.d
@@ -57,6 +61,10 @@ services:
       - ./WEB/security/certs:/config
     ports:
       - "443:443"
+    networks:
+      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
+      dmz_net:
+        ipv4_address: 192.168.0.22
     restart: unless-stopped
   soa-externe:
     container_name: dns-woodytoy
