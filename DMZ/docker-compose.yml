@@ -80,7 +80,7 @@ services:
     networks:
       # Attribue une adresse IP au container WEB appartenant à la zone DMZ
       dmz_net:
-        ipv4_address: 192.168.0.1
+        ipv4_address: 192.168.0.12
 
       #Création du réseau de la zone DMZ, on y attribue son sous-réseau et sa passerelle par défaut
 networks:
