@@ -12,10 +12,10 @@ services:
       # Attribue les ports 80 pour le container WEB
       - "80:80"
       - "443:443"
-    networks:
-      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
-      dmz_net:
-        ipv4_address: 192.168.0.2
+#    networks:
+#      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
+#      dmz_net:
+#        ipv4_address: 192.168.0.2
     links:
       - db
     volumes:
@@ -40,10 +40,7 @@ services:
     # Attribution des ports 3306 pour le service MySQL
     ports:
       - "3306:3306"
-    networks:
-      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
-      dmz_net:
-        ipv4_address: 192.168.0.6
+
     volumes:
       # Commande permettant de pouvoir insérer les données dans la DB depuis un fichier .sql
       - ./WEB/DB/db_woodytoys/db-data:/docker-entrypoint-initdb.d
@@ -59,10 +56,7 @@ services:
       - VALIDATION=http
     volumes:
       - ./WEB/security/certs:/config
-    networks:
-      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
-      dmz_net:
-        ipv4_address: 192.168.0.22
+
     restart: unless-stopped
   soa-externe:
     container_name: dns-woodytoy
@@ -77,10 +71,10 @@ services:
       - ./DNS/config/db.l2-7.ephec-ti.be:/etc/bind/db.l2-7.ephec-ti.be
     ports:
       - "53:53"
-    networks:
-      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
-      dmz_net:
-        ipv4_address: 192.168.0.12
+#    networks:
+#      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
+#      dmz_net:
+#        ipv4_address: 192.168.0.12
 
       #Création du réseau de la zone DMZ, on y attribue son sous-réseau et sa passerelle par défaut
 networks:
