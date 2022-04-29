@@ -23,6 +23,12 @@ services:
       - ./WEB/config/sites-available/WoodyToys-vitrine.conf:/etc/apache2/sites-available/WoodyToys-vitrine.conf:ro
       - ./WEB/config/sites-available/WoodyToys-B2B.conf:/etc/apache2/sites-available/WoodyToys-B2B.conf:ro
       - ./WEB/www/WoodyToys/b2b/WoodyToys-B2B.php:/var/www/html/WoodyToys/b2b/index.php
+    environment:
+      MAIN_DOMAIN: ${MAIN_DOMAIN}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PSW: ${MYSQL_PSW}
+    restart: unless-stopped
+
   db:
     # Attribue un nom au container de la base de données MySQL
     container_name: container-mysql-woodytoysdb
@@ -33,9 +39,9 @@ services:
     environment:
       # Créé une base de données, attribue un mot de passe pour le root et utilisateur admin nouvellement créé
       MYSQL_DATABASE : woodytoys_db
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_USER: 'admin'
-      MYSQL_PASSWORD: "root"#TODO: change password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PSW}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PSW}
     restart: always
     # Attribution des ports 3306 pour le service MySQL
     ports:
@@ -43,21 +49,7 @@ services:
 
     volumes:
       # Commande permettant de pouvoir insérer les données dans la DB depuis un fichier .sql
-      - ./WEB/DB/db_woodytoys/db-data:/docker-entrypoint-initdb.d
-  letsEncript:
-    container_name: woodytoy-certs
-    image: linuxserver/letsencrypt
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-      - URL=l2-7.ephec-ti.be
-      - SUBDOMAINS=www,b2b
-      - VALIDATION=http
-    volumes:
-      - ./WEB/security/certs:/config
-
-    restart: unless-stopped
+      - ./WEB/DB/db_woodytoys/db-data:/docker-entrypoint-initdb.denv variable +
   soa-externe:
     container_name: dns-woodytoy
     build:
@@ -71,6 +63,7 @@ services:
       - ./DNS/config/db.l2-7.ephec-ti.be:/etc/bind/db.l2-7.ephec-ti.be
     ports:
       - "53:53"
+    restart: unless-stopped
 #    networks:
 #      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
 #      dmz_net:
