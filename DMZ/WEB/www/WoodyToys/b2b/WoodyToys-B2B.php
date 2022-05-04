@@ -14,8 +14,9 @@
 </form>
 
 <?php
-//	$var_mdp = get_env('WOODYTOYS_DATABASE_PASSWORD');
-	$bdd = new PDO('mysql:host=135.125.101.237;dbname=woodytoys_db;charset=utf8', 'admin', "root");
+    $db_user = getenv('MYSQL_USER');
+	$db_mdp = getenv('WOODYTOYS_DATABASE_PASSWORD');
+	$bdd = new PDO('mysql:host=135.125.101.237;dbname=woodytoys_db;charset=utf8', $db_user, $db_mdp);
 	$reponse = $bdd->query("SELECT * FROM Produits");
 
 	while($donneesProduits = $reponse->fetch())
