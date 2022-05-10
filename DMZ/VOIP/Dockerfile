@@ -1,17 +1,23 @@
 # Version Ubuntu
-FROM ubuntu:latest
+FROM debian
 
 # Asterisk
-
-RUN apt update -y && apt upgrade -y
-RUN apt install asterisk
-
+RUN apt-get -y update && apt-get -y upgrade
+RUN apt-get install vim nano dnsutils net-tools asterisk -y
 
 # Récupération des fichiers dans le dossier de config
-COPY config/ /etc/asterisk/
+COPY config/sip.conf /etc/asterisk/sip.conf
+COPY config/sip.conf /etc/asterisk/sip.conf
+COPY config/extensions.conf /etc/asterisk/extensions.conf
+COPY config/voicemail.conf /etc/asterisk/voicemail.conf
 
-WORKDIR /etc/asterisk
+EXPOSE 5060/tcp 5060/udp
 
-EXPOSE 5060 5060/udp
+ENTRYPOINT [ "/usr/sbin/asterisk", "-f" ]
 
-CMD asterisk
+
+
+
+
+
+
