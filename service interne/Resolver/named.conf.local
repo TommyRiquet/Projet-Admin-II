@@ -7,7 +7,7 @@
 //include "/etc/bind/zones.rfc1918";
 
 
-zone "l2-7.ephec-ti.be"{
+zone "internl2-7.ephec-ti.be"{
 
     type master;
-    file "/etc/bind/db.l2-7.ep
+    file "/etc/bind/db.internl2-7.ephec-ti.be
