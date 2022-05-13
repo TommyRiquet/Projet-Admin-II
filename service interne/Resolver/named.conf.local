@@ -10,4 +10,5 @@
 zone "internl2-7.ephec-ti.be"{
 
     type master;
-    file "/etc/bind/db.internl2-7.ephec-ti.be
+    file "/etc/bind/db.internl2-7.ephec-ti.be";
+}:
