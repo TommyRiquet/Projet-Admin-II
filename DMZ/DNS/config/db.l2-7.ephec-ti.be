@@ -18,3 +18,6 @@ mail            IN      A        176.96.231.192
 voip            IN      A        176.96.231.194
 _sip._tcp	86400	IN	   SRV	  10	  100	  5060	  voip.l2-7.ephec-ti.be.
 _sip._udp	86400	IN	   SRV	  10	  100	  5060	  voip.l2-7.ephec-ti.be.
+
+$INCLUDE l2-7.ephec-ti.be.KSK.key
+$INCLUDE l2-7.ephec-ti.be.ZSK.key
