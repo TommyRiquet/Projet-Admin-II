@@ -7,7 +7,7 @@ RUN apt-get install vim nano dnsutils net-tools asterisk -y
 
 # Récupération des fichiers dans le dossier de config
 COPY config/sip.conf /etc/asterisk/sip.conf
-COPY config/sip.conf /etc/asterisk/sip.conf
+COPY config/users.conf /etc/asterisk/users.conf
 COPY config/extensions.conf /etc/asterisk/extensions.conf
 COPY config/voicemail.conf /etc/asterisk/voicemail.conf
 
