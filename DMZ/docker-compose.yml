@@ -51,11 +51,3 @@ services:
       # Commande permettant de pouvoir insérer les données dans la DB depuis un fichier .sql
       - ./WEB/DB/db_woodytoys/db-data:/docker-entrypoint-initdb.denv variable +
 
-#Création du réseau de la zone DMZ, on y attribue son sous-réseau et sa passerelle par défaut
-networks:
-  dmz_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.0.0/24
-
