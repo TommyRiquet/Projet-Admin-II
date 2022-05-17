@@ -29,3 +29,5 @@ RUN a2ensite WoodyToys-B2B.conf
 RUN a2ensite WoodyToys-vitrine.conf
 RUN a2enmod ssl
 RUN a2enmod rewrite
+RUN a2ensite www.l2-7.ephec-ti.be
+RUN a2ensite b2b.l2-7.ephec-ti.be
