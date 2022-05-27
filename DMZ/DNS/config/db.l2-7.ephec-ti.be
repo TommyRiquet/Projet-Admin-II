@@ -11,6 +11,11 @@ $ORIGIN l2-7.ephec-ti.be.; SOA
 @           IN      NS      ns.l2-7.ephec-ti.be.
             MX      10      mail
             
+;SPF
+@               IN      TXT     "v=spf1 include:mail.l2-7.ephec-ti.be ip4:176.96.231.192 -all"
+;DMARC
+_dmarc          IN      TXT     "v=DMARC1; p=none;"
+            
 ns              IN      A        176.96.231.192
 www             IN      A        176.96.231.192
 b2b             IN      A        176.96.231.192
