@@ -1,5 +1,11 @@
 version: '3'
-
+networks:
+  dmz_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
+          gateway: 172.16.0.1
 services:
   server-web:
     # Attribue un nom au container du serveur WEB apache
@@ -12,15 +18,13 @@ services:
       # Attribue les ports 80 pour le container WEB
       - "80:80"
       - "443:443"
-#    networks:
-#      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
-#      dmz_net:
-#        ipv4_address: 192.168.0.2
-    links:
-      - db
+    networks:
+      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
+      dmz_net:
+        ipv4_address: 172.16.0.2
     volumes:
       - ./WEB/config/apache2.conf:/etc/apache2/apache2.conf:ro
-      - ./WEB/config/sites-available/WoodyToys-vitrine.conf:/etc/apache2/sites-available/WoodyToys-vitrine.conf:ro
+      - ./WEB/config/sites-available/WoodyToys-www.conf:/etc/apache2/sites-available/WoodyToys-www.conf:ro
       - ./WEB/config/sites-available/WoodyToys-B2B.conf:/etc/apache2/sites-available/WoodyToys-B2B.conf:ro
       - ./WEB/www/WoodyToys/b2b/WoodyToys-B2B.php:/var/www/html/WoodyToys/b2b/index.php
     environment:
@@ -28,6 +32,8 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PSW: ${MYSQL_PSW}
     restart: unless-stopped
+    hostname: www.woodytoys.louisdewilde.be
+
 
   db:
     # Attribue un nom au container de la base de données MySQL
@@ -38,16 +44,20 @@ services:
       dockerfile: Dockerfile
     environment:
       # Créé une base de données, attribue un mot de passe pour le root et utilisateur admin nouvellement créé
-      MYSQL_DATABASE : woodytoys_db
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PSW}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PSW}
+      MARIADB_DATABASE : woodytoys_db
+      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PSW}
+      MARIADB_USER : ${MYSQL_USER}
+      MARIADB_PASSWORD : ${MYSQL_PSW}
     restart: always
     # Attribution des ports 3306 pour le service MySQL
     ports:
       - "3306:3306"
+    networks:
+      # Attribue une adresse IP au container WEB appartenant à la zone DMZ
+      dmz_net:
+        ipv4_address: 172.16.0.3
 
     volumes:
       # Commande permettant de pouvoir insérer les données dans la DB depuis un fichier .sql
-      - ./WEB/DB/db_woodytoys/db-data:/docker-entrypoint-initdb.denv variable +
+      - ./WEB/DB/db_woodytoys/db-data:/docker-entrypoint-initdb.d/
 

@@ -15,8 +15,13 @@
 
 <?php
     $db_user = getenv('MYSQL_USER');
-	$db_mdp = getenv('WOODYTOYS_DATABASE_PASSWORD');
-	$bdd = new PDO('mysql:host=135.125.101.237;dbname=woodytoys_db;charset=utf8', $db_user, $db_mdp);
+	$db_mdp = getenv('MYSQL_PSW');
+    try {
+        $bdd = new PDO('mysql:host=172.16.0.3;dbname=woodytoys_db;',username: $db_user, password: $db_mdp);
+        $bdd->exec("SET CHARACTER SET utf8");
+    }catch (\PDOException $e){
+        throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    }
 	$reponse = $bdd->query("SELECT * FROM Produits");
 
 	while($donneesProduits = $reponse->fetch())
@@ -33,6 +38,7 @@
 			'prodPrix_param' => $_POST["prixDuProduit"]
 		));
 	}
+    $bdd = null;
 ?>
 </body>
 
