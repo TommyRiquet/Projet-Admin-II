@@ -24,9 +24,14 @@ COPY www/WoodyToys/b2b/css/ /var/www/html/WoodyToys/b2b/css/
 COPY config/apache2.conf /etc/apache2/apache2.conf
 COPY config/sites-available/WoodyToys-www.conf /etc/apache2/sites-available/WoodyToys-www.conf
 COPY config/sites-available/WoodyToys-B2B.conf /etc/apache2/sites-available/WoodyToys-B2B.conf
+
+COPY security/b2b/ /etc/apache2/ssl/b2b
+COPY security/www/ /etc/apache2/ssl/www
+
+
 #Desactivating default vhost and activating ours
 RUN a2dissite 000-default.conf
 RUN a2ensite WoodyToys-B2B.conf
 RUN a2ensite WoodyToys-www.conf
 RUN a2enmod ssl
-#RUN a2enmod rewrite
+RUN a2enmod rewrite
