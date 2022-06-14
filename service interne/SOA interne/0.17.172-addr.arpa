@@ -1,0 +1,14 @@
+$ORIGIN 0.17.172.in-addr.arpa.
+$TTL 86400
+@               IN     SOA      ns.internl2-7.ephec-ti.be.     contact.l2-7.ephec-ti.be. (
+                                2001062501 ; 
+                                21600      ; 
+                                3600       ; 
+                                604800     ; 
+                                86400 )    ; 
+
+@       IN     NS         ns.internl2-7.ephec-ti.be. ;
+
+7        PTR        resolv.intranet.ephec-ti.be.
+5        PTR        ns.intranet.ephec-ti.be.
+6        PTR        file.intranet.ephec-ti.be.
