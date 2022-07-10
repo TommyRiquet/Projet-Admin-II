@@ -1,0 +1,10 @@
+bantime = 1d
+
+
+[sshd]
+enabled = true
+
+[asterisk]
+enabled = true
+banaction = docker-action
+action = %(action_)s
