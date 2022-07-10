@@ -12,4 +12,7 @@ RUN apt-get install smbclient -y
 RUN apt install cifs-utils -y 
 RUN apt install lunx -y 
 
+EXPOSE 136:136
+EXPOSE 445:445
+
 CMD tail -f /dev/null

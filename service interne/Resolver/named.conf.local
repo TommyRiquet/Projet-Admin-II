@@ -12,3 +12,9 @@ zone "internl2-7.ephec-ti.be"{
     type master;
     file "/etc/bind/db.internl2-7.ephec-ti.be";
 }:
+zone "0.17.172-addr.arpa"{
+
+    type forward;
+    forwarders {172.17.0.5; };
+    forward only; 
+}

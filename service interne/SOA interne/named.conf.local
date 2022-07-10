@@ -12,3 +12,8 @@ zone "internl2-7.ephec-ti.be"{
     type master;
     file "/etc/bind/db.internl2-7.ephec-ti.be";
 }; 
+
+zone "0.17.172-addr.arpa" IN{
+    type master;
+    file "/etc/bind/0.17.172-addr.arpa";
+}

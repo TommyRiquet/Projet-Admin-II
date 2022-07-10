@@ -1,5 +1,5 @@
 $TTL 86400 ; 1 day
-$ORIGIN l2-7.ephec-ti.be.; SOA
+$ORIGIN internl2-7.ephec-ti.be.; SOA
 
 @           IN      SOA     ns.internl2-7.ephec-ti.be.     admin.l2-7.ephec-ti.be. (
                                     2017060101  ; serial
@@ -11,9 +11,9 @@ $ORIGIN l2-7.ephec-ti.be.; SOA
 @           IN      NS      ns.l2-7.ephec-ti.be.
             MX      10      mail
             
-ns              IN      A        176.96.231.192
-resolv          IN      A        176.96.231.192
-file            IN      A        176.96.231.192
-voip            IN      A        176.96.231.192
+ns              IN      A        172.17.0.5
+resolv          IN      A        172.17.0.7
+file            IN      A        172.17.0.6
+voip            IN      A        172.17.0.4
 _sip._tcp	86400	IN	   SRV	  10	  100	  5060	  voip.internl2-7.ephec-ti.be.
 _sip._udp	86400	IN	   SRV	  10	  100	  5060	  voip.internl2-7.ephec-ti.be.
