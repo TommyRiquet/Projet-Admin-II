@@ -1,16 +1,38 @@
 options {
         directory "/var/cache/bind";
-
+    
+        auth-nxdomain no;
+        
+        directory "/var/cache/bind";
+        auth-nxdomain no;
+        
         // Configure the IPs to listen on here.
         listen-on { any; };
         listen-on-v6 { any; };
         // Accept queries from those sources
         allow-query {
-                any;
+                172.17.0.0;
+                172.17.0.1;
+                172.17.0.2;
+                172.17.0.3;
+                172.17.0.4;
+                172.17;0.5;
+                172.17.0.6;
         };
 
        allow-recursion {
-           any;
+                172.17.0.0;
+                172.17.0.1;
+                172.17.0.2;
+                172.17.0.3;
+                172.17.0.4;
+                172.17;0.5;
+                172.17.0.6;
+        };
+        
+        forwarders {
+                8.8.8.8;
+                8.8.4.4;
         };
         recursion yes;
         
