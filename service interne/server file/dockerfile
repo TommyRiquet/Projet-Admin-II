@@ -12,6 +12,8 @@ RUN apt-get install smbclient -y
 RUN apt install cifs-utils -y 
 RUN apt install lunx -y 
 
+COPY smb.conf /etc/samba/smb.conf
+
 EXPOSE 136:136
 EXPOSE 445:445
 
