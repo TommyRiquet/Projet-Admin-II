@@ -29,11 +29,7 @@ options {
                 172.17;0.5;
                 172.17.0.6;
         };
-        
-        forwarders {
-                8.8.8.8;
-                8.8.4.4;
-        };
+
         recursion yes;
         
         pid-file "/var/run/named/named.pid";
